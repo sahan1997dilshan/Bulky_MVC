@@ -33,7 +33,12 @@ namespace BulkyWeb.Controllers
 				ModelState.AddModelError("name", "Display order cannot match the name");  //server side validation .......
 			}
 
-			if(ModelState.IsValid)
+			if (obi.Name != null && obi.Name.ToLower() == "test")
+			{
+				ModelState.AddModelError("", "Test is not valid");//server validation
+			}
+
+			if (ModelState.IsValid)
 			{
 				_db.Categories.Add(obi);
 				_db.SaveChanges();
