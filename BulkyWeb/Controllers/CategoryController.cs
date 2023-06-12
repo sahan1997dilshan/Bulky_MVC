@@ -1,6 +1,8 @@
 ﻿using BulkyWeb.Data;
 using BulkyWeb.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BulkyWeb.Controllers
 {
@@ -97,9 +99,37 @@ namespace BulkyWeb.Controllers
 
 
 		//Delete category
-		public IActionResult Delete(int Id)
+
+		public IActionResult Delete(int? id)
 		{
-			return RedirectToAction("Index","Category");
+			if (id == null)
+			{
+				return NotFound();
+			}
+
+			Category obj = _db.Categories.Find(id);
+			if (obj == null)
+			{
+				return NotFound();
+			}
+			return View(obj);
+
+		}
+		[HttpPost, ActionName("Delete")]
+		public IActionResult DeleteRecord(Category obj)
+		{
+			//Category obj = _db.Categories.Find(id);
+
+			if (obj == null) 
+			{
+				return NotFound();
+			}
+			    _db.Categories.Remove(obj);
+			    _db.SaveChanges();
+				return RedirectToAction("Index", "Category");
+			
+			
+			
 		}
 
 

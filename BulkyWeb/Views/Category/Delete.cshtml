@@ -1,6 +1,7 @@
 ﻿@model Category
 
 <form method="post">
+	<input asp-for="Id" hidden />
 	<div class="border p-3 mt-4">
 		<div class="row pb-2">
 			<h3 class="text-primary">Create Category</h3>
@@ -11,18 +12,18 @@
 
 		<div class="row mb-3">
 			<label asp-for="Name" class="text-primary p-0"></label>
-			<input asp-for="Name" class="form-control"  />
-			<span asp-validation-for="Name" class="text-danger"></span>
+			<input asp-for="Name" class="form-control" disabled />
+			
 		</div>
 
 		<div class="row mb-3">
 			<label asp-for="DisplayOrder" class="text-primary p-0"></label>
-			<input asp-for="DisplayOrder" class="form-control" />
-			<span asp-validation-for="DisplayOrder" class="text-danger"></span>
+			<input asp-for="DisplayOrder" class="form-control" disabled />
+			
 		</div>
 		<div class="row">
 			<div class="col-6">
-				<button class="btn btn-info form-control" type="submit"> Edit</button>
+				<button class="btn btn-info btn-danger form-control" type="submit"> Delete</button>
 			</div>
 			<div class="col-6">
 				<a asp-controller="Category" asp-action="Index" class="btn form-control btn-info">Back Page</a>
