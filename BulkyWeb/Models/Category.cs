@@ -10,9 +10,11 @@ namespace BulkyWeb.Models
 		public int Id { get; set; }
 		[Required]
 
+		[MaxLength(10)]   //validation 
 		[DisplayName("Name")]
 		public string Name { get; set; }
 
+		
 		[DisplayName("Display Order")]
 		public string DisplayOrder { get; set; }
 	}
