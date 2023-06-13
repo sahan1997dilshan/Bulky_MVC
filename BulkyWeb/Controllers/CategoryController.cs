@@ -45,6 +45,7 @@ namespace BulkyWeb.Controllers
 				_db.Categories.Add(obi);
 				_db.SaveChanges();
 				//checked validation
+				TempData["success"] = "Category was added succesful"; //when loading view page this will generated the view page.....
 
 				return RedirectToAction("Index", "Category");  //no need to mention controller name if both action are genereted same controller....
 			}
@@ -90,6 +91,7 @@ namespace BulkyWeb.Controllers
 			{
 				_db.Categories.Update(obj);
 				_db.SaveChanges();
+				TempData["success"] = "Category was Edited succesful";
 				return RedirectToAction("Index", "Category");
 
 			}
@@ -126,7 +128,8 @@ namespace BulkyWeb.Controllers
 			}
 			    _db.Categories.Remove(obj);
 			    _db.SaveChanges();
-				return RedirectToAction("Index", "Category");
+			    TempData["success"] = "Category was Deleted succesful";
+			    return RedirectToAction("Index", "Category");
 			
 			
 			
